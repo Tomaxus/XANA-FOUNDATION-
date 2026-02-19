@@ -1,170 +1,422 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundación Xana - Enlace Informativo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
-    <style>
-        :root {
-            --color-primario: #5dade2; /* Azul suave, representativo de la fundación */
-            --color-oscuro: #2c3e50;
-            --color-fondo: #f4f7f6;
-            --blanco: #ffffff;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fundación</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #f5f5f7;
+			--surface: rgba(255, 255, 255, 0.8);
+			--text: #1d1d1f;
+			--muted: #6e6e73;
+			--border: rgba(0, 0, 0, 0.08);
+			--accent-a: #0a84ff;
+			--accent-b: #0066cc;
+			--shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+			--radius: 20px;
+		}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+		* {
+			box-sizing: border-box;
+		}
 
-        body {
-            background-color: var(--color-fondo);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			font-family: 'Inter', sans-serif;
+			color: var(--text);
+			background: linear-gradient(180deg, #fbfbfd 0%, var(--bg) 100%);
+			display: flex;
+			justify-content: center;
+			padding: 34px 18px 56px;
+			overflow-x: hidden;
+		}
 
-        .container {
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-        }
+		.page {
+			width: min(1080px, 100%);
+			display: grid;
+			gap: 16px;
+			grid-template-columns: 1.28fr 0.72fr;
+			animation: fadeIn 0.9s ease both;
+		}
 
-        /* Encabezado */
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--color-primario);
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
+		.card {
+			background: var(--surface);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 24px;
+			transition: transform 0.25s ease, box-shadow 0.25s ease;
+		}
 
-        h1 {
-            font-size: 1.5rem;
-            color: var(--color-oscuro);
-            margin-bottom: 5px;
-        }
+		.card:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+		}
 
-        p.subtitle {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 25px;
-        }
+		.hero {
+			grid-column: 1 / 2;
+			display: grid;
+			gap: 18px;
+			align-content: center;
+			min-height: 290px;
+			padding: 34px 32px;
+		}
 
-        /* Secciones de Video */
-        .video-card {
-            background: var(--blanco);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+		.hero h1 {
+			margin: 0;
+			font-size: clamp(2rem, 4.2vw, 3.2rem);
+			letter-spacing: -0.04em;
+			line-height: 1.1;
+			font-weight: 700;
+		}
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* Relación 16:9 */
-            height: 0;
-        }
+		.hero p {
+			margin: 0;
+			color: var(--muted);
+			max-width: 60ch;
+			line-height: 1.6;
+			font-size: 1rem;
+		}
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+		.cta {
+			justify-self: start;
+			border: 0;
+			padding: 11px 20px;
+			border-radius: 999px;
+			color: #fff;
+			font-weight: 600;
+			font-size: 0.92rem;
+			letter-spacing: 0.01em;
+			background: linear-gradient(120deg, var(--accent-a), var(--accent-b));
+			box-shadow: 0 8px 16px rgba(10, 132, 255, 0.25);
+			cursor: pointer;
+			transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+		}
 
-        .video-info {
-            padding: 12px;
-            font-weight: 600;
-            color: var(--color-oscuro);
-            font-size: 0.95rem;
-        }
+		.cta:hover {
+			transform: translateY(-1px);
+			filter: brightness(1.04);
+			box-shadow: 0 10px 20px rgba(10, 132, 255, 0.3);
+		}
 
-        /* Botones de Enlace */
-        .link-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--blanco);
-            color: var(--color-oscuro);
-            text-decoration: none;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+		.cta:focus-visible {
+			outline: 3px solid rgba(111, 139, 255, 0.35);
+			outline-offset: 2px;
+		}
 
-        .link-button i {
-            margin-right: 10px;
-            color: var(--color-primario);
-        }
+		.logo-card {
+			grid-column: 2 / 3;
+			display: grid;
+			place-items: center;
+			min-height: 240px;
+			padding: 18px;
+		}
 
-        .link-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            background-color: var(--color-primario);
-            color: white;
-        }
+		.logo-card img {
+			width: 100%;
+			max-width: 300px;
+			border-radius: 18px;
+			object-fit: cover;
+		}
 
-        .link-button:hover i {
-            color: white;
-        }
+		.photo-card {
+			grid-column: 1 / 2;
+			padding: 10px;
+			min-height: 330px;
+		}
 
-        footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #999;
-        }
-    </style>
+		.photo-card img {
+			width: 100%;
+			height: 100%;
+			min-height: 300px;
+			object-fit: cover;
+			object-position: center 22%;
+			border-radius: 20px;
+		}
+
+		.values {
+			grid-column: 2 / 3;
+			display: grid;
+			gap: 10px;
+			align-content: start;
+		}
+
+		.values h2,
+		.impact h2 {
+			margin: 0;
+			font-size: 1.25rem;
+			letter-spacing: -0.02em;
+		}
+
+		.pillars {
+			display: grid;
+			gap: 8px;
+		}
+
+		.pillar {
+			background: rgba(255, 255, 255, 0.72);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			border-radius: 14px;
+			padding: 14px;
+			transition: transform 0.2s ease, background 0.2s ease;
+		}
+
+		.pillar:hover {
+			transform: translateX(2px);
+			background: rgba(255, 255, 255, 0.92);
+		}
+
+		.pillar h3 {
+			margin: 0 0 4px;
+			font-size: 1rem;
+		}
+
+		.pillar p,
+		.impact p {
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.58;
+			font-size: 0.94rem;
+		}
+
+		.impact {
+			grid-column: 1 / 3;
+			display: grid;
+			gap: 8px;
+			padding: 28px;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.video-card {
+			grid-column: 1 / 3;
+			display: grid;
+			gap: 12px;
+			padding: 22px;
+		}
+
+		.video-card h2 {
+			margin: 0;
+			font-size: 1.2rem;
+			letter-spacing: -0.02em;
+		}
+
+		.video-card p {
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.58;
+			font-size: 0.94rem;
+		}
+
+		.video-grid {
+			display: grid;
+			gap: 12px;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.video-item {
+			display: grid;
+			gap: 8px;
+		}
+
+		.video-item h3 {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: 600;
+			letter-spacing: -0.01em;
+		}
+
+		.video-wrap {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			border-radius: 16px;
+			overflow: hidden;
+			background: rgba(12, 16, 26, 0.06);
+			border: 1px solid rgba(0, 0, 0, 0.07);
+		}
+
+		.video-wrap iframe {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
+
+		.impact h2:first-of-type,
+		.impact p:first-of-type {
+			grid-column: 1 / 2;
+		}
+
+		.impact h2:last-of-type,
+		.impact p:last-of-type {
+			grid-column: 2 / 3;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(16px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 920px) {
+			.page {
+				grid-template-columns: 1fr;
+				gap: 14px;
+			}
+
+			.hero,
+			.logo-card,
+			.photo-card,
+			.values,
+			.impact {
+				grid-column: 1 / -1;
+			}
+
+			.logo-card,
+			.hero {
+				min-height: auto;
+			}
+
+			.photo-card {
+				min-height: 240px;
+			}
+
+			.impact {
+				grid-template-columns: 1fr;
+			}
+
+			.video-card {
+				grid-column: 1 / -1;
+			}
+
+			.video-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.impact h2:first-of-type,
+			.impact p:first-of-type,
+			.impact h2:last-of-type,
+			.impact p:last-of-type {
+				grid-column: 1 / -1;
+			}
+
+			.hero {
+				padding: 26px;
+			}
+
+			.hero h1 {
+				font-size: clamp(1.8rem, 7vw, 2.35rem);
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.page,
+			.card,
+			.cta,
+			.pillar {
+				animation: none;
+				transition: none;
+			}
+		}
+	</style>
 </head>
 <body>
+	<main class="page" aria-label="Página principal de la fundación">
+		<section class="card hero">
+			<h1>Fundación</h1>
+			<p>
+				Acompañamos a niños, niñas y familias en momentos complejos, creando un entorno de apoyo humano,
+				cuidado integral y oportunidades para mantener viva la esperanza.
+			</p>
+			<button class="cta" type="button">Cómo ayudar</button>
+		</section>
 
-    <div class="container">
-        <img src="https://fundacionxana.org/wp-content/uploads/2023/11/logo-fundacion-xana.png" alt="Logo Fundación Xana" class="profile-img">
-        
-        <h1>Fundación Xana</h1>
-        <p class="subtitle">Acompañamiento a familias de niños con enfermedades graves.</p>
+		<section class="card logo-card" aria-label="Logo de la fundación">
+			<img src="https://www.discapnet.es/sites/default/files/styles/322x225/public/archivos/noticias/logo%20fundaci%C3%B3n%20xana.jpg.webp?itok=p-rGso05" alt="Logo de la fundación">
+		</section>
 
-        <div class="video-card">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Pj_7v7_T68w" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">La Historia de Xana y Luis Enrique</div>
-        </div>
+		<section class="card photo-card" aria-label="Imagen destacada">
+			<img src="https://fotos.perfil.com/2025/06/01/trim/720/410/luis-enrique-con-xana-2034253.jpg" alt="Luis Enrique con Xana">
+		</section>
 
-        <div class="video-card">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/uH_XyXfH92U" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">Misión y Propósito de la Fundación</div>
-        </div>
+		<section class="card values" aria-label="Valores de la fundación">
+			<h2>Valores</h2>
+			<div class="pillars">
+				<article class="pillar">
+					<h3>Empatía</h3>
+					<p>Escuchamos cada historia con cercanía, respeto y sensibilidad real.</p>
+				</article>
+				<article class="pillar">
+					<h3>Acompañamiento</h3>
+					<p>Estamos presentes en cada etapa con apoyo emocional, social y humano.</p>
+				</article>
+				<article class="pillar">
+					<h3>Esperanza</h3>
+					<p>Impulsamos una mirada positiva para construir futuro con fortaleza y confianza.</p>
+				</article>
+			</div>
+		</section>
 
-        <a href="https://fundacionxana.org/" target="_blank" class="link-button">
-            <i class="fas fa-globe"></i> Página Web Oficial
-        </a>
+		<section class="card impact" aria-label="Misión e impacto social">
+			<h2>Misión</h2>
+			<p>
+				Ofrecer un espacio de ayuda integral para familias que atraviesan procesos delicados, fortaleciendo su bienestar y su red de apoyo.
+			</p>
+			<h2>Impacto Social</h2>
+			<p>
+				Nuestro impacto se traduce en atención cercana, recursos para mejorar la calidad de vida y una comunidad comprometida con transformar el acompañamiento en oportunidades reales.
+			</p>
+		</section>
 
-        <a href="https://fundacionxana.org/nuestros-proyectos/" target="_blank" class="link-button">
-            <i class="fas fa-hand-holding-heart"></i> Nuestros Aportes y Proyectos
-        </a>
+		<section class="card video-card" aria-label="Videos sobre labor social de la fundación">
+			<h2>Reconocimiento social</h2>
+			<p>
+				Contenido audiovisual sobre el compromiso social de la fundación y su reconocimiento público.
+			</p>
+			<div class="video-grid">
+				<article class="video-item">
+					<h3>Mensaje sobre Xana</h3>
+					<div class="video-wrap">
+						<iframe
+							src="https://www.youtube.com/embed/0h0b9XOqIf4"
+							title="Luis Enrique habla de Xana"
+							loading="lazy"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen>
+						</iframe>
+					</div>
+				</article>
+				<article class="video-item">
+					<h3>Premio Sócrates 2025</h3>
+					<div class="video-wrap">
+						<iframe
+							src="https://www.youtube.com/embed/sRveBglJEqA"
+							title="Premio Sócrates 2025 por labor social"
+							loading="lazy"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen>
+						</iframe>
+					</div>
+				</article>
+			</div>
+		</section>
 
-        <a href="https://fundacionxana.org/donar/" target="_blank" class="link-button" style="border: 2px solid var(--color-primario);">
-            <i class="fas fa-heart"></i> ¿Cómo puedes ayudar?
-        </a>
-
-        <footer>
-            En memoria de Xana &bull; 2026
-        </footer>
-    </div>
-
+	</main>
 </body>
 </html>
