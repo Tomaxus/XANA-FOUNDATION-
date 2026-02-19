@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Xana - Enlace Informativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #5dade2; /* Azul suave, representativo de la fundación */
+            --color-oscuro: #2c3e50;
+            --color-fondo: #f4f7f6;
+            --blanco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        /* Encabezado */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--color-primario);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: var(--color-oscuro);
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Secciones de Video */
+        .video-card {
+            background: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            padding: 12px;
+            font-weight: 600;
+            color: var(--color-oscuro);
+            font-size: 0.95rem;
+        }
+
+        /* Botones de Enlace */
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blanco);
+            color: var(--color-oscuro);
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .link-button i {
+            margin-right: 10px;
+            color: var(--color-primario);
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            background-color: var(--color-primario);
+            color: white;
+        }
+
+        .link-button:hover i {
+            color: white;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://fundacionxana.org/wp-content/uploads/2023/11/logo-fundacion-xana.png" alt="Logo Fundación Xana" class="profile-img">
+        
+        <h1>Fundación Xana</h1>
+        <p class="subtitle">Acompañamiento a familias de niños con enfermedades graves.</p>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Pj_7v7_T68w" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">La Historia de Xana y Luis Enrique</div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/uH_XyXfH92U" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">Misión y Propósito de la Fundación</div>
+        </div>
+
+        <a href="https://fundacionxana.org/" target="_blank" class="link-button">
+            <i class="fas fa-globe"></i> Página Web Oficial
+        </a>
+
+        <a href="https://fundacionxana.org/nuestros-proyectos/" target="_blank" class="link-button">
+            <i class="fas fa-hand-holding-heart"></i> Nuestros Aportes y Proyectos
+        </a>
+
+        <a href="https://fundacionxana.org/donar/" target="_blank" class="link-button" style="border: 2px solid var(--color-primario);">
+            <i class="fas fa-heart"></i> ¿Cómo puedes ayudar?
+        </a>
+
+        <footer>
+            En memoria de Xana &bull; 2026
+        </footer>
+    </div>
+
+</body>
+</html>
