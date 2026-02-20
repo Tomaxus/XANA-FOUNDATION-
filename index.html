@@ -3,62 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impacto Social: Fundación Xana</title>
+    <title>Impacto Social | Fundación Xana</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="animated-background">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
+    <div class="liquid-bg">
+        <div class="color-orb orb-1"></div>
+        <div class="color-orb orb-2"></div>
+        <div class="color-orb orb-3"></div>
     </div>
+    <div class="noise-overlay"></div>
 
-    <header class="hero-section hidden">
-        <span class="tagline">Fútbol y Sociedad</span>
-        <h1>Del dolor a la esperanza.</h1>
-        <p class="intro-text">Cómo la comunidad del fútbol se unió para transformar una tragedia personal en un movimiento de acompañamiento vital a través de la <strong>Fundación Xana</strong>.</p>
-    </header>
+    <main class="container">
+        <header class="glass-card hero reveal">
+            <div class="badge">Fútbol y Sociedad</div>
+            <h1>Del dolor a la <br><span>esperanza.</span></h1>
+            <p>Cómo la comunidad del fútbol se unió para transformar una tragedia personal en un movimiento de acompañamiento vital a través de la Fundación Xana.</p>
+        </header>
 
-    <main class="content-container">
-        <section class="info-card hidden delay-1">
-            <div class="card-icon">⚽</div>
+        <section class="glass-card video-section reveal">
+            <h2>El Testimonio</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/0h0b9XOqIf4?end=73&rel=0&modestbranding=1" title="Luis Enrique sobre Xana" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="caption">"9 años maravillosos". El origen de un movimiento que trasciende el deporte.</p>
+        </section>
+
+        <section class="glass-card text-section reveal">
+            <span class="icon-glow">⚽</span>
             <h2>El Fútbol como Altavoz</h2>
             <p>Luis Enrique, una figura global del fútbol, utilizó su visibilidad no para hablar de táctica, sino para visibilizar una realidad dura: el cáncer infantil y los cuidados paliativos. El fútbol sirvió como el trampolín para que este mensaje llegara a millones.</p>
         </section>
 
-        <section class="info-card hidden delay-2" style="border-left: 5px solid var(--coral);">
-            <div class="card-icon">❤️</div>
-            <h2>La Misión de Xana</h2>
-            <p>La fundación no busca curar lo incurable, sino <strong>acompañar</strong>. Ofrecer soporte integral (emocional, psicológico y logístico) a familias con niños gravemente enfermos, asegurando que la alegría y la dignidad estén presentes en todo el proceso.</p>
-             <img src="https://ih1.redbubble.net/image.5894506207.6987/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Ilustración Xana" class="card-image">
-        </section>
-
-        <section class="info-card award-card hidden delay-3">
-            <div class="award-header">
-                <span class="trophy-icon">🏆</span>
-                <div>
-                    <h3>Impacto Reconocido</h3>
-                    <span class="award-name">Premio Sócrates (Balón de Oro)</span>
+        <section class="glass-card impact-section reveal">
+            <div class="content-split">
+                <div class="text-content">
+                    <span class="icon-glow">❤️</span>
+                    <h2>La Misión de Xana</h2>
+                    <p>La fundación no busca curar lo incurable, sino <strong>acompañar</strong>. Tiene como misión acompañar a niños, niñas y adolescentes que sufren enfermedades graves en situación de vulnerabilidad y a sus familias, a través de un enfoque integral.</p>
+                    <p>Ayudamos a través de nuestros programas, en colaboración con otras entidades, ofreciendo un acompañamiento holístico (emocional, recreativo, educativo, terapéutico y social).</p>
+                </div>
+                <div class="img-content">
+                    <img src="https://ih1.redbubble.net/image.5894506207.6987/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Xana y Luis Enrique" class="floating-img">
                 </div>
             </div>
-            <p>Este premio destaca a futbolistas por su compromiso social. Que la Fundación Xana fuera finalista o reconocida demuestra cómo el ecosistema del fútbol valora y premia las iniciativas que van más allá del campo de juego.</p>
         </section>
 
-        <section class="video-section hidden delay-4">
-            <h2>El Testimonio</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/0h0b9XOqIf4" title="Luis Enrique sobre Xana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <section class="glass-card services-section reveal">
+            <h2>Servicios a pacientes y familias</h2>
+            <p>Diseñados para abordar de manera completa las necesidades del niño y su familia.</p>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🏠</div>
+                    <h4>Alojamiento</h4>
+                    <p>Espacios temporales para familias que se trasladan desde fuera de la ciudad.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💰</div>
+                    <h4>Soporte Económico</h4>
+                    <p>Ayudas económicas a aquellas familias en situación de vulnerabilidad.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💆‍♀️</div>
+                    <h4>Fisioterapia</h4>
+                    <p>Servicio a domicilio para niños con afectaciones motoras, mínimo una vez por semana.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🧘‍♂️</div>
+                    <h4>Bienestar</h4>
+                    <p>Espacios para que las familias puedan descansar, recargar energía y aliviar el estrés.</p>
+                </div>
             </div>
-            <p class="video-caption">"Mi hija vino a vivir con nosotros 9 años maravillosos". Una lección de amor que inspiró el movimiento.</p>
         </section>
 
-        <footer class="cta-footer hidden delay-5">
-            <p>El fútbol tiene el poder de unirnos en las causas más humanas.</p>
-            <a href="https://fundacionxana.org/" target="_blank" class="main-button">
-                Visitar la web oficial de la Fundación
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <section class="glass-card emotional-section reveal">
+            <h2>Acompañamiento Emocional</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🎨</div>
+                    <h4>Arteterapia</h4>
+                    <p>Proceso de sanación emocional a domicilio para sobrellevar la enfermedad.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🧠</div>
+                    <h4>Psicología Clínica</h4>
+                    <p>Atención especializada para promover el bienestar y gestionar dificultades.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🕊️</div>
+                    <h4>Final de Vida</h4>
+                    <p>Apoyo integral y psicológico en los momentos finales, un proceso muy delicado.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">❤️</div>
+                    <h4>Gestión del Duelo</h4>
+                    <p>Herramientas para ayudar a la familia a gestionar la pérdida de forma saludable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card project-section reveal">
+            <span class="icon-glow">✨</span>
+            <h2>Mil y un sueños</h2>
+            <p>Transformar la vida de niños y niñas con enfermedades graves a través de vivencias positivas, creando experiencias únicas e inolvidables.</p>
+        </section>
+
+        <section class="glass-card award-section reveal">
+            <div class="award-content">
+                <span class="icon-glow">🏆</span>
+                <div>
+                    <h3>Impacto Reconocido: Premio Sócrates</h3>
+                    <p>Este premio del Balón de Oro destaca a futbolistas por su compromiso social. Que la Fundación Xana sea reconocida demuestra cómo el ecosistema del fútbol valora iniciativas que van más allá del campo.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="glass-card cta-section reveal">
+            <h2>La vida es para celebrarla</h2>
+            <p>Gracias por explorar el impacto social de esta iniciativa.</p>
+            <a href="https://fundacionxana.org/" target="_blank" class="glow-btn">
+                Visitar Fundación Xana
+                <span class="arrow">→</span>
             </a>
-            <small>Proyecto escolar sobre el impacto del fútbol en la sociedad.</small>
+            <small>Proyecto Escolar de Investigación 2026</small>
         </footer>
     </main>
 

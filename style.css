@@ -1,255 +1,157 @@
-/* Variables de color inspiradas en la calidez de la fundación */
 :root {
-    --coral: #FF8C69;
-    --soft-orange: #FFBD9B;
-    --cream: #FFF5E1;
-    --dark-text: #2D3748;
-    --light-text: #718096;
+    --coral: #FF7F50;
+    --salmon: #FA8072;
+    --light-bg: #fff5f2;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.7);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--cream);
-    color: var(--dark-text);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    background-color: var(--light-bg);
     line-height: 1.6;
-    overflow-x: hidden; /* Evita scroll horizontal por las animaciones del fondo */
 }
 
-/* --- Fondo Animado --- */
-.animated-background {
+/* --- FONDO LÍQUIDO --- */
+.liquid-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2;
     overflow: hidden;
+    background: #ffebe6;
+    filter: blur(80px); 
 }
 
-.shape {
+.color-orb {
     position: absolute;
-    filter: blur(80px);
-    opacity: 0.4;
-    animation: float 20s infinite alternate ease-in-out;
+    border-radius: 50%;
+    animation: float 25s infinite ease-in-out alternate;
+    opacity: 0.6;
 }
 
-.shape1 {
-    width: 300px;
-    height: 300px;
-    background-color: var(--coral);
-    top: -50px;
-    left: -100px;
-}
-
-.shape2 {
-    width: 400px;
-    height: 400px;
-    background-color: var(--soft-orange);
-    bottom: -100px;
-    right: -50px;
-    animation-delay: -10s;
-}
+.orb-1 { width: 60vw; height: 60vw; background: var(--coral); top: -10%; left: -10%; }
+.orb-2 { width: 50vw; height: 50vw; background: var(--salmon); bottom: -10%; right: -10%; animation-delay: -5s; }
+.orb-3 { width: 45vw; height: 45vw; background: #FFDAB9; top: 40%; left: 40%; animation-delay: -10s; }
 
 @keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(100px, 50px) rotate(20deg); }
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(10vw, 15vh) scale(1.1); }
 }
 
-/* --- Estructura Principal --- */
-.hero-section {
-    padding: 60px 20px 40px;
-    text-align: center;
+.noise-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
 }
 
-.tagline {
-    color: var(--coral);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 10px;
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    max-width: 900px; margin: 0 auto; padding: 40px 20px;
+    display: flex; flex-direction: column; gap: 25px;
 }
 
-h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--dark-text);
+/* --- TARJETAS CRISTAL --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px; padding: 35px;
+    box-shadow: 0 10px 30px rgba(255, 127, 80, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.intro-text {
-    font-size: 1.1rem;
-    color: var(--light-text);
-    max-width: 600px;
-    margin: 0 auto;
+.glass-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 127, 80, 0.15);
 }
 
-.content-container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+/* --- TIPOGRAFÍA --- */
+.badge {
+    background: var(--coral); color: white;
+    padding: 6px 16px; border-radius: 30px;
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+    display: inline-block; margin-bottom: 15px; letter-spacing: 1px;
 }
 
-/* --- Tarjetas --- */
-.info-card {
-    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-    backdrop-filter: blur(10px); /* Efecto cristal */
-    padding: 30px;
-    border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+h1 { font-size: 2.8rem; line-height: 1.15; margin-bottom: 15px; font-weight: 800; }
+h1 span { color: var(--coral); }
+h2 { font-size: 1.8rem; color: var(--salmon); margin-bottom: 15px; font-weight: 700; }
+p { margin-bottom: 10px; color: var(--text-dark); }
+.icon-glow { font-size: 2.5rem; margin-bottom: 10px; display: inline-block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+
+/* --- VIDEO --- */
+.video-container {
+    position: relative; padding-bottom: 56.25%; height: 0;
+    border-radius: 15px; overflow: hidden; margin-bottom: 15px;
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.caption { font-style: italic; opacity: 0.7; text-align: center; font-size: 0.9rem; }
+
+/* --- IMAGEN FLOTANTE --- */
+.content-split { display: flex; flex-direction: column; gap: 25px; align-items: center; }
+.floating-img {
+    width: 100%; max-width: 280px; border-radius: 20px;
+    animation: levitate 5s infinite ease-in-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+@keyframes levitate {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
-.info-card:hover {
-    transform: translateY(-5px);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-h2 {
-    color: var(--coral);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-
-.card-image {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 15px;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilo especial para tarjeta de premio */
-.award-card {
-    background: linear-gradient(135deg, #fff, #fff5f0);
-    border: 2px solid var(--soft-orange);
-}
-
-.award-header {
-    display: flex;
-    align-items: center;
+/* --- GRID DE SERVICIOS (Nuevo) --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 15px;
-    margin-bottom: 15px;
-}
-
-.trophy-icon {
-    font-size: 3rem;
-}
-
-.award-name {
-    display: block;
-    color: var(--coral);
-    font-weight: 600;
-}
-
-/* --- Video --- */
-.video-section {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
-    height: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    background: #000;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.video-caption {
-    margin-top: 15px;
-    font-style: italic;
-    color: var(--light-text);
-}
-
-/* --- Footer y Botón --- */
-.cta-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding-bottom: 40px;
-}
-
-.main-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(45deg, var(--coral), var(--soft-orange));
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    margin: 20px 0;
-    box-shadow: 0 10px 20px rgba(255, 140, 105, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.main-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 25px rgba(255, 140, 105, 0.4);
-}
-
-.cta-footer small {
-    display: block;
     margin-top: 20px;
-    color: var(--light-text);
-    opacity: 0.7;
 }
 
-/* --- Clases para Animación (Scroll Reveal) --- */
-.hidden {
-    opacity: 0;
-    transform: translateY(40px); /* Empieza más abajo */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.service-item {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: background 0.3s ease;
 }
 
-.visible {
-    opacity: 1;
-    transform: translateY(0);
+.service-item:hover { background: rgba(255, 255, 255, 0.9); }
+.service-icon { font-size: 2rem; margin-bottom: 8px; }
+.service-item h4 { color: var(--coral); margin-bottom: 5px; font-size: 1.1rem; }
+.service-item p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+/* --- PREMIO --- */
+.award-content { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+.award-content .icon-glow { font-size: 4rem; margin: 0; filter: drop-shadow(0 0 15px rgba(255,215,0,0.6)); }
+
+/* --- BOTÓN --- */
+.cta-section { text-align: center; }
+.glow-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--text-dark); color: white;
+    padding: 16px 32px; border-radius: 50px; text-decoration: none;
+    font-weight: 600; font-size: 1.1rem; margin-top: 20px; margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
+.glow-btn:hover { background: var(--coral); transform: scale(1.03); box-shadow: 0 10px 25px rgba(255, 127, 80, 0.4); }
 
-/* Retrasos escalonados para que no aparezca todo a la vez */
-.delay-1 { transition-delay: 0.2s; }
-.delay-2 { transition-delay: 0.4s; }
-.delay-3 { transition-delay: 0.6s; }
-.delay-4 { transition-delay: 0.8s; }
-.delay-5 { transition-delay: 1s; }
+/* --- ANIMACIONES SCROLL --- */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Responsive para pantallas grandes */
+/* --- PC RESPONSIVE --- */
 @media (min-width: 768px) {
-    h1 { font-size: 3.5rem; }
-    .content-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .video-section, .cta-footer {
-        grid-column: span 2;
-    }
+    h1 { font-size: 4rem; }
+    .content-split { flex-direction: row; justify-content: space-between; text-align: left; }
+    .text-content { flex: 1; padding-right: 20px; }
+    .img-content { flex: 0.5; display: flex; justify-content: flex-end; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .award-content { flex-direction: row; text-align: left; }
 }
