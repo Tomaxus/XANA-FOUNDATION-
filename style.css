@@ -1,0 +1,255 @@
+/* Variables de color inspiradas en la calidez de la fundación */
+:root {
+    --coral: #FF8C69;
+    --soft-orange: #FFBD9B;
+    --cream: #FFF5E1;
+    --dark-text: #2D3748;
+    --light-text: #718096;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal por las animaciones del fondo */
+}
+
+/* --- Fondo Animado --- */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+.shape1 {
+    width: 300px;
+    height: 300px;
+    background-color: var(--coral);
+    top: -50px;
+    left: -100px;
+}
+
+.shape2 {
+    width: 400px;
+    height: 400px;
+    background-color: var(--soft-orange);
+    bottom: -100px;
+    right: -50px;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(100px, 50px) rotate(20deg); }
+}
+
+/* --- Estructura Principal --- */
+.hero-section {
+    padding: 60px 20px 40px;
+    text-align: center;
+}
+
+.tagline {
+    color: var(--coral);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* --- Tarjetas --- */
+.info-card {
+    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto cristal */
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: var(--coral);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.card-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo especial para tarjeta de premio */
+.award-card {
+    background: linear-gradient(135deg, #fff, #fff5f0);
+    border: 2px solid var(--soft-orange);
+}
+
+.award-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.trophy-icon {
+    font-size: 3rem;
+}
+
+.award-name {
+    display: block;
+    color: var(--coral);
+    font-weight: 600;
+}
+
+/* --- Video --- */
+.video-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-caption {
+    margin-top: 15px;
+    font-style: italic;
+    color: var(--light-text);
+}
+
+/* --- Footer y Botón --- */
+.cta-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+.main-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, var(--coral), var(--soft-orange));
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 20px 0;
+    box-shadow: 0 10px 20px rgba(255, 140, 105, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 140, 105, 0.4);
+}
+
+.cta-footer small {
+    display: block;
+    margin-top: 20px;
+    color: var(--light-text);
+    opacity: 0.7;
+}
+
+/* --- Clases para Animación (Scroll Reveal) --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza más abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos escalonados para que no aparezca todo a la vez */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 1s; }
+
+/* Responsive para pantallas grandes */
+@media (min-width: 768px) {
+    h1 { font-size: 3.5rem; }
+    .content-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .video-section, .cta-footer {
+        grid-column: span 2;
+    }
+}

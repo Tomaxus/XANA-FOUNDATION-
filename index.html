@@ -1,564 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fundación</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style>
-		:root {
-			--bg: #f5f5f7;
-			--surface: rgba(255, 255, 255, 0.8);
-			--text: #1d1d1f;
-			--muted: #6e6e73;
-			--border: rgba(0, 0, 0, 0.08);
-			--accent-a: #0a84ff;
-			--accent-b: #0066cc;
-			--shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-			--radius: 20px;
-		}
-
-		* {
-			box-sizing: border-box;
-		}
-
-		body {
-			margin: 0;
-			min-height: 100vh;
-			font-family: 'Inter', sans-serif;
-			color: var(--text);
-			background: linear-gradient(180deg, #fbfbfd 0%, var(--bg) 100%);
-			display: flex;
-			justify-content: center;
-			padding: 34px 18px 56px;
-			overflow-x: hidden;
-		}
-
-		.page {
-			width: min(1080px, 100%);
-			display: grid;
-			gap: 16px;
-			grid-template-columns: 1.28fr 0.72fr;
-			animation: fadeIn 0.9s ease both;
-		}
-
-		.card {
-			background: var(--surface);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			border: 1px solid var(--border);
-			border-radius: var(--radius);
-			box-shadow: var(--shadow);
-			padding: 24px;
-			transition: transform 0.25s ease, box-shadow 0.25s ease;
-		}
-
-		.card:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-		}
-
-		.hero {
-			grid-column: 1 / 2;
-			display: grid;
-			gap: 18px;
-			align-content: center;
-			min-height: 290px;
-			padding: 34px 32px;
-		}
-
-		.hero h1 {
-			margin: 0;
-			font-size: clamp(2rem, 4.2vw, 3.2rem);
-			letter-spacing: -0.04em;
-			line-height: 1.1;
-			font-weight: 700;
-		}
-
-		.hero p {
-			margin: 0;
-			color: var(--muted);
-			max-width: 60ch;
-			line-height: 1.6;
-			font-size: 1rem;
-		}
-
-		.cta {
-			justify-self: start;
-			border: 0;
-			padding: 11px 20px;
-			border-radius: 999px;
-			color: #fff;
-			font-weight: 600;
-			font-size: 0.92rem;
-			letter-spacing: 0.01em;
-			background: linear-gradient(120deg, var(--accent-a), var(--accent-b));
-			box-shadow: 0 8px 16px rgba(10, 132, 255, 0.25);
-			cursor: pointer;
-			transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-		}
-
-		.cta:hover {
-			transform: translateY(-1px);
-			filter: brightness(1.04);
-			box-shadow: 0 10px 20px rgba(10, 132, 255, 0.3);
-		}
-
-		.cta:focus-visible {
-			outline: 3px solid rgba(111, 139, 255, 0.35);
-			outline-offset: 2px;
-		}
-
-		.logo-card {
-			grid-column: 2 / 3;
-			display: grid;
-			place-items: center;
-			min-height: 240px;
-			padding: 18px;
-		}
-
-		.logo-card img {
-			width: 100%;
-			max-width: 300px;
-			border-radius: 18px;
-			object-fit: cover;
-		}
-
-		.photo-card {
-			grid-column: 1 / 2;
-			padding: 10px;
-			min-height: 330px;
-		}
-
-		.photo-card img {
-			width: 100%;
-			height: 100%;
-			min-height: 300px;
-			object-fit: cover;
-			object-position: center 22%;
-			border-radius: 20px;
-		}
-
-		.values {
-			grid-column: 2 / 3;
-			display: grid;
-			gap: 10px;
-			align-content: start;
-		}
-
-		.values h2,
-		.impact h2 {
-			margin: 0;
-			font-size: 1.25rem;
-			letter-spacing: -0.02em;
-		}
-
-		.pillars {
-			display: grid;
-			gap: 8px;
-		}
-
-		.pillar {
-			background: rgba(255, 255, 255, 0.72);
-			border: 1px solid rgba(0, 0, 0, 0.05);
-			border-radius: 14px;
-			padding: 14px;
-			transition: transform 0.2s ease, background 0.2s ease;
-		}
-
-		.pillar:hover {
-			transform: translateX(2px);
-			background: rgba(255, 255, 255, 0.92);
-		}
-
-		.pillar h3 {
-			margin: 0 0 4px;
-			font-size: 1rem;
-		}
-
-		.pillar p,
-		.impact p {
-			margin: 0;
-			color: var(--muted);
-			line-height: 1.58;
-			font-size: 0.94rem;
-		}
-
-		.impact {
-			grid-column: 1 / 3;
-			display: grid;
-			gap: 8px;
-			padding: 28px;
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.video-card {
-			grid-column: 1 / 3;
-			display: grid;
-			gap: 12px;
-			padding: 22px;
-		}
-
-		.video-card h2 {
-			margin: 0;
-			font-size: 1.2rem;
-			letter-spacing: -0.02em;
-		}
-
-		.video-card p {
-			margin: 0;
-			color: var(--muted);
-			line-height: 1.58;
-			font-size: 0.94rem;
-		}
-
-		.video-grid {
-			display: grid;
-			gap: 12px;
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.video-item {
-			display: grid;
-			gap: 8px;
-		}
-
-		.video-item h3 {
-			margin: 0;
-			font-size: 1rem;
-			font-weight: 600;
-			letter-spacing: -0.01em;
-		}
-
-		.video-wrap {
-			position: relative;
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			border-radius: 16px;
-			overflow: hidden;
-			background: rgba(12, 16, 26, 0.06);
-			border: 1px solid rgba(0, 0, 0, 0.07);
-		}
-
-		.video-wrap iframe {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			border: 0;
-		}
-
-		.video-link {
-			display: grid;
-			gap: 10px;
-			color: inherit;
-			text-decoration: none;
-		}
-
-		.video-thumb {
-			position: relative;
-			border-radius: 16px;
-			overflow: hidden;
-			aspect-ratio: 16 / 9;
-			border: 1px solid rgba(0, 0, 0, 0.07);
-			background: #111;
-		}
-
-		.video-thumb img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-		}
-
-		.video-thumb::after {
-			content: "▶";
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			width: 56px;
-			height: 56px;
-			display: grid;
-			place-items: center;
-			border-radius: 999px;
-			background: rgba(0, 0, 0, 0.62);
-			color: #fff;
-			font-size: 1.05rem;
-		}
-
-		.video-note {
-			margin: 0;
-			color: var(--muted);
-			font-size: 0.9rem;
-		}
-
-
-		.impact h2:first-of-type,
-		.impact p:first-of-type {
-			grid-column: 1 / 2;
-		}
-
-		.impact h2:last-of-type,
-		.impact p:last-of-type {
-			grid-column: 2 / 3;
-		}
-
-		@keyframes fadeIn {
-			from {
-				opacity: 0;
-				transform: translateY(16px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		@media (max-width: 920px) {
-			body {
-				padding: 20px 12px 34px;
-			}
-
-			.page {
-				grid-template-columns: 1fr;
-				gap: 10px;
-				width: 100%;
-			}
-
-			.hero,
-			.logo-card,
-			.photo-card,
-			.values,
-			.impact,
-			.video-card {
-				grid-column: 1 / -1;
-			}
-
-			.card {
-				padding: 18px;
-				border-radius: 16px;
-				box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-			}
-
-			.card:hover {
-				transform: none;
-				box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-			}
-
-			.logo-card,
-			.hero {
-				min-height: auto;
-			}
-
-			.logo-card {
-				padding: 14px;
-			}
-
-			.logo-card img {
-				max-width: 220px;
-				border-radius: 14px;
-			}
-
-			.photo-card {
-				min-height: auto;
-				padding: 8px;
-			}
-
-			.photo-card img {
-				min-height: 220px;
-				aspect-ratio: 4 / 3;
-				border-radius: 14px;
-				object-position: center 18%;
-			}
-
-			.impact {
-				grid-template-columns: 1fr;
-				padding: 18px;
-			}
-
-			.values h2,
-			.impact h2,
-			.video-card h2 {
-				font-size: 1.08rem;
-			}
-
-			.hero p,
-			.pillar p,
-			.impact p,
-			.video-card p,
-			.video-note {
-				font-size: 0.9rem;
-				line-height: 1.5;
-			}
-
-			.pillars {
-				gap: 6px;
-			}
-
-			.pillar {
-				padding: 12px;
-			}
-
-			.video-card {
-				padding: 18px;
-			}
-
-			.video-grid {
-				grid-template-columns: 1fr;
-				gap: 10px;
-			}
-
-			.video-thumb,
-			.video-wrap {
-				border-radius: 12px;
-			}
-
-			.video-thumb::after {
-				width: 44px;
-				height: 44px;
-				font-size: 0.95rem;
-			}
-
-			.impact h2:first-of-type,
-			.impact p:first-of-type,
-			.impact h2:last-of-type,
-			.impact p:last-of-type {
-				grid-column: 1 / -1;
-			}
-
-			.hero {
-				padding: 20px;
-				gap: 14px;
-			}
-
-			.hero h1 {
-				font-size: clamp(1.65rem, 8vw, 2.1rem);
-				letter-spacing: -0.03em;
-			}
-
-			.cta {
-				width: 100%;
-				text-align: center;
-				padding: 12px 16px;
-			}
-		}
-
-		@media (max-width: 420px) {
-			body {
-				padding: 14px 10px 26px;
-			}
-
-			.card {
-				padding: 14px;
-				border-radius: 14px;
-			}
-
-			.hero {
-				padding: 16px;
-			}
-
-			.hero h1 {
-				font-size: 1.55rem;
-			}
-
-			.video-note {
-				font-size: 0.86rem;
-			}
-		}
-
-		@media (prefers-reduced-motion: reduce) {
-			.page,
-			.card,
-			.cta,
-			.pillar {
-				animation: none;
-				transition: none;
-			}
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto Social: Fundación Xana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<main class="page" aria-label="Página principal de la fundación">
-		<section class="card hero">
-			<h1>Fundación</h1>
-			<p>
-				Acompañamos a niños, niñas y familias en momentos complejos, creando un entorno de apoyo humano,
-				cuidado integral y oportunidades para mantener viva la esperanza.
-			</p>
-			<button class="cta" type="button">Cómo ayudar</button>
-		</section>
+    <div class="animated-background">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+    </div>
 
-		<section class="card logo-card" aria-label="Logo de la fundación">
-			<img src="https://www.discapnet.es/sites/default/files/styles/322x225/public/archivos/noticias/logo%20fundaci%C3%B3n%20xana.jpg.webp?itok=p-rGso05" alt="Logo de la fundación">
-		</section>
+    <header class="hero-section hidden">
+        <span class="tagline">Fútbol y Sociedad</span>
+        <h1>Del dolor a la esperanza.</h1>
+        <p class="intro-text">Cómo la comunidad del fútbol se unió para transformar una tragedia personal en un movimiento de acompañamiento vital a través de la <strong>Fundación Xana</strong>.</p>
+    </header>
 
-		<section class="card photo-card" aria-label="Imagen destacada">
-			<img src="https://fotos.perfil.com/2025/06/01/trim/720/410/luis-enrique-con-xana-2034253.jpg" alt="Luis Enrique con Xana">
-		</section>
+    <main class="content-container">
+        <section class="info-card hidden delay-1">
+            <div class="card-icon">⚽</div>
+            <h2>El Fútbol como Altavoz</h2>
+            <p>Luis Enrique, una figura global del fútbol, utilizó su visibilidad no para hablar de táctica, sino para visibilizar una realidad dura: el cáncer infantil y los cuidados paliativos. El fútbol sirvió como el trampolín para que este mensaje llegara a millones.</p>
+        </section>
 
-		<section class="card values" aria-label="Valores de la fundación">
-			<h2>Valores</h2>
-			<div class="pillars">
-				<article class="pillar">
-					<h3>Empatía</h3>
-					<p>Escuchamos cada historia con cercanía, respeto y sensibilidad real.</p>
-				</article>
-				<article class="pillar">
-					<h3>Acompañamiento</h3>
-					<p>Estamos presentes en cada etapa con apoyo emocional, social y humano.</p>
-				</article>
-				<article class="pillar">
-					<h3>Esperanza</h3>
-					<p>Impulsamos una mirada positiva para construir futuro con fortaleza y confianza.</p>
-				</article>
-			</div>
-		</section>
+        <section class="info-card hidden delay-2" style="border-left: 5px solid var(--coral);">
+            <div class="card-icon">❤️</div>
+            <h2>La Misión de Xana</h2>
+            <p>La fundación no busca curar lo incurable, sino <strong>acompañar</strong>. Ofrecer soporte integral (emocional, psicológico y logístico) a familias con niños gravemente enfermos, asegurando que la alegría y la dignidad estén presentes en todo el proceso.</p>
+             <img src="https://ih1.redbubble.net/image.5894506207.6987/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="Ilustración Xana" class="card-image">
+        </section>
 
-		<section class="card impact" aria-label="Misión e impacto social">
-			<h2>Misión</h2>
-			<p>
-				Ofrecer un espacio de ayuda integral para familias que atraviesan procesos delicados, fortaleciendo su bienestar y su red de apoyo.
-			</p>
-			<h2>Impacto Social</h2>
-			<p>
-				Nuestro impacto se traduce en atención cercana, recursos para mejorar la calidad de vida y una comunidad comprometida con transformar el acompañamiento en oportunidades reales.
-			</p>
-		</section>
+        <section class="info-card award-card hidden delay-3">
+            <div class="award-header">
+                <span class="trophy-icon">🏆</span>
+                <div>
+                    <h3>Impacto Reconocido</h3>
+                    <span class="award-name">Premio Sócrates (Balón de Oro)</span>
+                </div>
+            </div>
+            <p>Este premio destaca a futbolistas por su compromiso social. Que la Fundación Xana fuera finalista o reconocida demuestra cómo el ecosistema del fútbol valora y premia las iniciativas que van más allá del campo de juego.</p>
+        </section>
 
-		<section class="card video-card" aria-label="Videos sobre labor social de la fundación">
-			<h2>Reconocimiento social</h2>
-			<p>
-				Contenido audiovisual sobre el compromiso social de la fundación y su reconocimiento público.
-			</p>
-			<div class="video-grid">
-				<article class="video-item">
-					<h3>Mensaje sobre Xana</h3>
-					<div class="video-wrap">
-						<iframe
-							src="https://www.youtube.com/embed/0h0b9XOqIf4"
-							title="Luis Enrique habla de Xana"
-							loading="lazy"
-							referrerpolicy="strict-origin-when-cross-origin"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowfullscreen>
-						</iframe>
-					</div>
-				</article>
-				<article class="video-item">
-					<h3>Premio Sócrates 2025</h3>
-					<a class="video-link" href="https://www.youtube.com/watch?v=sRveBglJEqA" target="_blank" rel="noopener noreferrer" aria-label="Ver Premio Sócrates 2025 en YouTube">
-						<div class="video-thumb">
-							<img src="https://i.ytimg.com/vi/sRveBglJEqA/hqdefault.jpg" alt="Miniatura del video Premio Sócrates 2025">
-						</div>
-						<p class="video-note">Este video tiene reproducción embebida restringida. Ábrelo en YouTube.</p>
-					</a>
-				</article>
-			</div>
-		</section>
+        <section class="video-section hidden delay-4">
+            <h2>El Testimonio</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/0h0b9XOqIf4" title="Luis Enrique sobre Xana" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-caption">"Mi hija vino a vivir con nosotros 9 años maravillosos". Una lección de amor que inspiró el movimiento.</p>
+        </section>
 
-	</main>
+        <footer class="cta-footer hidden delay-5">
+            <p>El fútbol tiene el poder de unirnos en las causas más humanas.</p>
+            <a href="https://fundacionxana.org/" target="_blank" class="main-button">
+                Visitar la web oficial de la Fundación
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <small>Proyecto escolar sobre el impacto del fútbol en la sociedad.</small>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
